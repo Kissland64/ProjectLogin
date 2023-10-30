@@ -1,6 +1,19 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿<CascadingAuthenticationState>
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <NotAuthorized>
+                <div class="align-content-center">
+                    <label>
+                        <h1>
+                            No tienes la autorizacion necesaria para acceder aqui. :)
+                        </h1>
+                    </label>
+                    <br />
+                    <img width="600" src="https://media.tenor.com/uQ9lBRycxlQAAAAd/goku-janemba.gif"
+                </div>
+            </NotAuthorized>
+        </AuthorizeRouteView>
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
@@ -10,3 +23,4 @@
         </LayoutView>
     </NotFound>
 </Router>
+</CascadingAuthenticationState>
